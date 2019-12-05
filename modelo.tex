@@ -1,0 +1,100 @@
+
+\documentclass[12pt]{exam}
+\usepackage[T1]{fontenc}%Codificação
+\usepackage[utf8]{inputenc}%Inclui palavras com acento
+\usepackage[brazil]{babel} %Traduz para o português
+\usepackage[top=2cm,left=1cm,right=1.5cm,bottom=2cm]{geometry}%margens
+\usepackage{amsmath,amssymb}%Expressoes matemáticas e símbolos
+\RequirePackage{amssymb, amsfonts, amsmath, latexsym, verbatim, xspace, setspace}
+\usepackage{multicol}% Múltiplas colunas
+\usepackage{multirow}% permite mesclar células de modo horizontal
+\usepackage{array}%para tabelas
+\usepackage{ragged2e}%alinhamento
+\usepackage{graphicx}%Para inserir imagens
+\usepackage{pdflscape}%Permite mudar a orientacao da pagina
+\usepackage{epstopdf} %converte figs eps em figs pdf
+\usepackage{booktabs}%tabelas
+\usepackage{pdfpages}%Permite incluir arquivos pdf
+\usepackage{float}
+\usepackage[sort&compress,square,comma, authoryear]{natbib}%Referencias
+\usepackage[colorlinks=true,urlcolor=magenta,citecolor=red,linkcolor=blue,bookmarks=true]{hyperref}%Links e citações
+\usepackage{enumerate}%enumeracao
+\usepackage{enumitem}%enumeracao
+\usepackage{listings}% http://ctan.org/pkg/listings
+\lstset{
+  basicstyle=\ttfamily,
+  mathescape
+}
+%---Definição de Itens e Subitens---
+\newlist{partes}{enumerate}{3}
+\setlist[partes]{label=(\alph*)}
+\pointpoints{ponto}{pontos}
+\vpword{Pontos}
+\hpword{Pontos:}
+\newcommand{\parte}{\item}
+%---
+\newlist{subpartes}{enumerate}{3}
+\setlist[subpartes]{label=\roman*)}
+\newcommand{\subparte}{\item}
+\setlist[enumerate,1]{%(
+	leftmargin=*, itemsep=12pt, label={\textbf{\arabic*.)}}}
+\newcommand{\dis}{\displaystyle}
+\renewcommand*\half{.5}
+\hqword{\textcolor{blue}{Questão:}}
+\hsword{Item Escolhido:}
+\htword{\textcolor{blue}{Total}}
+\newcommand{\orgao}{@curso - Prova @prova}
+\newcommand{\escola}{Instituto Federal de Educação, Ciência e Tecnologia do Ceará - Itapipoca}
+\newcommand{\disciplina}{@disciplina}
+\newcommand{\professor}{@professor}
+% \newcommand{\data}{\today}
+\newcommand{\prova}{Prova @prova - @disciplina}
+% \newcommand{\tempo}{50 Minutos}
+\newcommand{\aluno}{\bf Aluno:}
+\newcommand{\nota}{NOTA:}
+%=========================================================
+%------------Cabeçalho da Segunda 
+%=========================================================
+\pagestyle{headandfoot}%{head}%empty
+\firstpageheader{}{}{}
+\runningheader{\prova}{}{\data}
+\runningheadrule
+\firstpagefooter{}{}{}
+\runningfooter{}{Boa Prova!}{Página \thepage}
+\runningfootrule
+%========================================================
+\begin{document}
+\fontsize{14}{14}\selectfont
+%========================================================
+%-------------------Cabeçalho da Primeira Página
+%========================================================
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}}l @{\extracolsep{6pt}}l}
+%--------------------Orgão e Turma
+\textbf{\orgao} &\\
+%--------------------Escola/Departamento e Data
+\textbf{\escola} & &\\
+\textbf{Disciplina:}\textbf{\disciplina}&\\
+%-------------------Disciplina e Professor
+\textbf{Professor: \professor}  & \\[8pt]
+\textbf{Nota:} & \\
+&\\
+%-------------------
+\multicolumn{3}{l}{\Large{\aluno \textbf{\hrulefill}}}\\
+\end{tabular*}
+
+\begin{center}
+\textbf{GABARITO}\\
+\addpoints
+\gradetable[h][questions]
+\end{center}
+	
+\noindent
+\rule[1ex]{\textwidth}{1pt}
+%--------------------Linha Após a Tabela
+\begin{questions}
+@questoes
+\end{questions}
+
+@gabarito
+
+\end{document}
